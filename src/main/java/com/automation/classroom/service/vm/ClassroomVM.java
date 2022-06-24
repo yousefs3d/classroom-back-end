@@ -1,22 +1,15 @@
-package com.automation.classroom.service.dto;
+package com.automation.classroom.service.vm;
 
-import lombok.Getter;
-import lombok.Setter;
-
-
-//@Getter
-//@Setter
-public class ClassroomDTO {
-
+public class ClassroomVM {
     private Long id;
     private String room;
     private Integer capacity;
     private String building;
 
-    public ClassroomDTO() {
+    public ClassroomVM() {
     }
 
-    public ClassroomDTO(Long id, String room, Integer capacity, String building) {
+    public ClassroomVM(Long id, String room, Integer capacity, String building) {
         this.id = id;
         this.room = room;
         this.capacity = capacity;

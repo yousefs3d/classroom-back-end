@@ -2,10 +2,19 @@ package com.automation.classroom.service.mapper;
 
 import com.automation.classroom.domain.Classroom;
 import com.automation.classroom.service.dto.ClassroomDTO;
+import com.automation.classroom.service.vm.ClassroomVM;
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-@Mapper
+import java.util.List;
+
+@Mapper(
+        componentModel = "spring"
+)
 public interface ClassroomMapper {
 
-    public ClassroomDTO classroomToClassroomDTO(Classroom classroom);
+    ClassroomMapper INSTANCE = Mappers.getMapper( ClassroomMapper.class );
+//    List<ClassroomDTO> map(List<Classroom> classrooms);
+
+    Classroom classroomVMToClassroom (ClassroomVM classroomVM);
 }

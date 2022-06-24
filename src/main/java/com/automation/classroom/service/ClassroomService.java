@@ -2,22 +2,43 @@ package com.automation.classroom.service;
 
 import com.automation.classroom.domain.Classroom;
 import com.automation.classroom.repository.ClassroomRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.automation.classroom.service.dto.ClassroomDTO;
+import com.automation.classroom.service.mapper.ClassroomMapper;
+import com.automation.classroom.service.vm.ClassroomVM;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
 public class ClassroomService {
 
-    private ClassroomRepository classroomRepository;
+    private final ClassroomRepository classroomRepository;
+    private final ClassroomMapper classroomMapper;
 
-    private void saveClassroom(Classroom classroom){
-        classroomRepository.save(classroom);
+    public ClassroomService(ClassroomRepository classroomRepository, ClassroomMapper classroomMapper) {
+        this.classroomRepository = classroomRepository;
+        this.classroomMapper = classroomMapper;
     }
 
-    public List<Classroom> getAllClassrooms(){
-        return classroomRepository.findAll();
+    private Classroom saveClassroom(Classroom classroom){
+        return classroomRepository.save(classroom);
+    }
+
+    public List<ClassroomDTO> getAllClassrooms(){
+        List<Classroom> myClassroom = classroomRepository.findAll();
+        return myClassroom.stream().map(classroom -> {
+            ClassroomDTO classroomDTO = new ClassroomDTO();
+            classroomDTO.setId(classroom.getId());
+            classroomDTO.setRoom(classroom.getRoom());
+            classroomDTO.setBuilding(classroom.getBuilding());
+            classroomDTO.setCapacity(classroom.getCapacity());
+            return classroomDTO;
+        }).collect(Collectors.toList());
+    }
+
+    public Classroom addNewClass(ClassroomVM classroomVM){
+        return saveClassroom(classroomMapper.classroomVMToClassroom(classroomVM));
     }
 }
