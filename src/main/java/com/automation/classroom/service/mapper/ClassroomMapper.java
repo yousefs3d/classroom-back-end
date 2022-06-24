@@ -14,7 +14,8 @@ import java.util.List;
 public interface ClassroomMapper {
 
     ClassroomMapper INSTANCE = Mappers.getMapper( ClassroomMapper.class );
-//    List<ClassroomDTO> map(List<Classroom> classrooms);
+
+    List<ClassroomDTO> classroomsToClassroomDTOs(List<Classroom> classrooms);
 
     Classroom classroomVMToClassroom (ClassroomVM classroomVM);
 }

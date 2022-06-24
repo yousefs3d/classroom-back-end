@@ -91,7 +91,7 @@
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
-			</plugin>mapstruct
+			</plugin>
 		</plugins>
 	</build>
 

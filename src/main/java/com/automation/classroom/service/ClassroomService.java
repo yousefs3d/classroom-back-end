@@ -5,11 +5,8 @@ import com.automation.classroom.repository.ClassroomRepository;
 import com.automation.classroom.service.dto.ClassroomDTO;
 import com.automation.classroom.service.mapper.ClassroomMapper;
 import com.automation.classroom.service.vm.ClassroomVM;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ClassroomService {
@@ -28,14 +25,7 @@ public class ClassroomService {
 
     public List<ClassroomDTO> getAllClassrooms(){
         List<Classroom> myClassroom = classroomRepository.findAll();
-        return myClassroom.stream().map(classroom -> {
-            ClassroomDTO classroomDTO = new ClassroomDTO();
-            classroomDTO.setId(classroom.getId());
-            classroomDTO.setRoom(classroom.getRoom());
-            classroomDTO.setBuilding(classroom.getBuilding());
-            classroomDTO.setCapacity(classroom.getCapacity());
-            return classroomDTO;
-        }).collect(Collectors.toList());
+        return classroomMapper.classroomsToClassroomDTOs(myClassroom);
     }
 
     public Classroom addNewClass(ClassroomVM classroomVM){
