@@ -18,4 +18,7 @@ public interface ClassroomMapper {
     List<ClassroomDTO> classroomsToClassroomDTOs(List<Classroom> classrooms);
 
     Classroom classroomVMToClassroom (ClassroomVM classroomVM);
+
+    ClassroomDTO classroomToClassroomDTO(Classroom classroom);
+
 }
