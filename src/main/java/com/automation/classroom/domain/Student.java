@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class Student implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Pattern(regexp = "([a-zA-Z]+[\\s]+[a-zA-Z]+)")
     private String name;
