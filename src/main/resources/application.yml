@@ -9,7 +9,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/school
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/School
     username: admin
     password: admin
     driver-class-name: com.mysql.jdbc.Driver

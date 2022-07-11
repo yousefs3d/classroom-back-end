@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 //@Getter
 //@Setter
-@Entity(name = "class")
+@Entity(name = "TBL_CLASSROOM")
 public class Classroom implements Serializable {
 
     @Id
