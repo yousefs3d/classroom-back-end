@@ -7,7 +7,7 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <changeSet author="admin" id="create-classroom-join-student-table">
-        <createTable tableName="TBL_STUDENT_CLASSROOM">
+        <createTable tableName="studentClass">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
