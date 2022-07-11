@@ -7,9 +7,8 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <!--    create table    -->
-    <include file="/db/changelog/changes/create-class-table.xml"/>
-
-    <!--    insert into table    -->
-    <include file="/db/changelog/changes/insert-into-class-table.xml"/>
+    <include file="/db/changelog/changes/create-classroom-table.xml"/>
+    <include file="/db/changelog/changes/create-student-table.xml"/>
+    <include file="/db/changelog/changes/create-classroom-join-student-table.xml"/>
 
 </databaseChangeLog>

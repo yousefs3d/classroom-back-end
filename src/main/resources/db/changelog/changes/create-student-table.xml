@@ -6,18 +6,18 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <changeSet author="admin" id="create-class-table">
-        <createTable tableName="class">
+    <changeSet author="admin" id="create-student-table">
+        <createTable tableName="student">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="room" type="NVARCHAR(50)">
+            <column name="name" type="NVARCHAR(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="capacity" type="INT">
+            <column name="email" type="VARCHAR(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="building" type="NVARCHAR(50)">
+            <column name="mobile" type="VARCHAR(50)">
                 <constraints nullable="false"/>
             </column>
         </createTable>

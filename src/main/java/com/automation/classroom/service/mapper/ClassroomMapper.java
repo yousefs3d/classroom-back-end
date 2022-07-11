@@ -8,9 +8,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(
-        componentModel = "spring"
-)
+@Mapper(componentModel = "spring")
 public interface ClassroomMapper {
 
     ClassroomMapper INSTANCE = Mappers.getMapper( ClassroomMapper.class );
