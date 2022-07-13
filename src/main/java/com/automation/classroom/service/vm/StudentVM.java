@@ -2,6 +2,7 @@ package com.automation.classroom.service.vm;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 public class StudentVM {
 
@@ -12,16 +13,7 @@ public class StudentVM {
     private String email;
     @Pattern(regexp = "[055]+[0-9]{7}")
     private String mobile;
-
-    public StudentVM() {
-    }
-
-    public StudentVM(Long id, String name, String email, String mobile) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.mobile = mobile;
-    }
+    private List<Long> classroomIds;
 
     public Long getId() {
         return id;
@@ -53,5 +45,13 @@ public class StudentVM {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public List<Long> getClassroomIds() {
+        return classroomIds;
+    }
+
+    public void setClassroomIds(List<Long> classroomIds) {
+        this.classroomIds = classroomIds;
     }
 }

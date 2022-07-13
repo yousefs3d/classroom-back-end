@@ -36,6 +36,10 @@ public class ClassroomService {
         return classroomMapper.classroomToClassroomDTO(classroom);
     }
 
+    public List<Classroom> getAllClassroomsByIds(List<Long> classroomIds){
+        return classroomRepository.findAllById(classroomIds);
+    }
+
     public Classroom addNewClass(ClassroomVM classroomVM){
         return saveClassroom(classroomMapper.classroomVMToClassroom(classroomVM));
     }

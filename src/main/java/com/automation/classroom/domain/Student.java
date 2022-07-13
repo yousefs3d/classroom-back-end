@@ -1,12 +1,11 @@
 package com.automation.classroom.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "student")
 public class Student implements Serializable {
@@ -20,15 +19,9 @@ public class Student implements Serializable {
     private String email;
     @Pattern(regexp = "[055]+[0-9]{7}")
     private String mobile;
-
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<StudentClassroom> studentClassrooms = new HashSet<>();
     public Student() {}
-
-    public Student(Long id, String name, String email, String mobile) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.mobile = mobile;
-    }
 
     public Long getId() {
         return id;
@@ -60,5 +53,13 @@ public class Student implements Serializable {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public Set<StudentClassroom> getStudentClassrooms() {
+        return studentClassrooms;
+    }
+
+    public void setStudentClassrooms(Set<StudentClassroom> studentClassrooms) {
+        this.studentClassrooms = studentClassrooms;
     }
 }

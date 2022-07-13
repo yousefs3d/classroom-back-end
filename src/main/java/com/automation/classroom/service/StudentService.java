@@ -2,6 +2,7 @@ package com.automation.classroom.service;
 
 
 import com.automation.classroom.domain.Student;
+import com.automation.classroom.domain.StudentClassroom;
 import com.automation.classroom.exception.BusinessException;
 import com.automation.classroom.repository.StudentRepository;
 import com.automation.classroom.service.dto.StudentDTO;
@@ -10,6 +11,7 @@ import com.automation.classroom.service.vm.StudentVM;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 
 @Transactional
 @Service
@@ -17,10 +19,12 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
     private final StudentMapper studentMapper;
-
-    public StudentService(StudentRepository studentRepository, StudentMapper studentMapper) {
+    private final StudentClassroomService studentClassroomService;
+    public StudentService(StudentRepository studentRepository, StudentMapper studentMapper,
+                          StudentClassroomService studentClassroomService) {
         this.studentRepository = studentRepository;
         this.studentMapper = studentMapper;
+        this.studentClassroomService = studentClassroomService;
     }
 
     private Student saveStudent(Student student){
@@ -39,8 +43,11 @@ public class StudentService {
         return studentMapper.studentToStudentDTO(student);
     }
 
-    public Student addNewStudent(StudentVM studentVM){
-        return saveStudent(studentMapper.studentVMToStudent(studentVM));
+    public Long addNewStudent(StudentVM studentVM){
+        Student student = studentMapper.studentVMToStudent(studentVM);
+        studentClassroomService.addNewStudentToClassroom(student,studentVM.getClassroomIds());
+        saveStudent(student);
+        return student.getId();
     }
 
     public Student updateStudent(StudentVM studentVM){

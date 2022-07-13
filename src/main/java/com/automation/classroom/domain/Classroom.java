@@ -1,15 +1,12 @@
 package com.automation.classroom.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
 
-//@Getter
-//@Setter
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+
 @Entity(name = "class")
 public class Classroom implements Serializable {
 
@@ -19,15 +16,10 @@ public class Classroom implements Serializable {
     private String room;
     private Integer capacity;
     private String building;
+    @OneToMany(mappedBy = "classroom", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<StudentClassroom> studentClassrooms = new HashSet<>();
 
     public Classroom() {
-    }
-
-    public Classroom(Long id, String room, Integer capacity, String building) {
-        this.id = id;
-        this.room = room;
-        this.capacity = capacity;
-        this.building = building;
     }
 
     public Long getId() {
@@ -46,6 +38,10 @@ public class Classroom implements Serializable {
         return building;
     }
 
+    public Set<StudentClassroom> getStudentClassrooms() {
+        return studentClassrooms;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -60,5 +56,9 @@ public class Classroom implements Serializable {
 
     public void setBuilding(String building) {
         this.building = building;
+    }
+
+    public void setStudentClassrooms(Set<StudentClassroom> studentClassrooms) {
+        this.studentClassrooms = studentClassrooms;
     }
 }

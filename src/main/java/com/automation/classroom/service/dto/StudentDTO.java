@@ -1,9 +1,9 @@
 package com.automation.classroom.service.dto;
 
-import liquibase.pro.packaged.E;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 public class StudentDTO {
 
@@ -14,15 +14,8 @@ public class StudentDTO {
     private String email;
     @Pattern(regexp = "[055]+[0-9]{7}")
     private String mobile;
-
+    private List<ClassroomDTO> classroomDTOs;
     public StudentDTO() {
-    }
-
-    public StudentDTO(Long id, String name, String email, String mobile) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.mobile = mobile;
     }
 
     public Long getId() {
@@ -55,5 +48,13 @@ public class StudentDTO {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public List<ClassroomDTO> getClassroomDTOs() {
+        return classroomDTOs;
+    }
+
+    public void setClassroomDTOs(List<ClassroomDTO> classroomDTOs) {
+        this.classroomDTOs = classroomDTOs;
     }
 }

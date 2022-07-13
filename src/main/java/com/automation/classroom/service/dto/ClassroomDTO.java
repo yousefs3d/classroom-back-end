@@ -1,11 +1,6 @@
 package com.automation.classroom.service.dto;
 
-import lombok.Getter;
-import lombok.Setter;
 
-
-//@Getter
-//@Setter
 public class ClassroomDTO {
 
     private Long id;
@@ -16,12 +11,6 @@ public class ClassroomDTO {
     public ClassroomDTO() {
     }
 
-    public ClassroomDTO(Long id, String room, Integer capacity, String building) {
-        this.id = id;
-        this.room = room;
-        this.capacity = capacity;
-        this.building = building;
-    }
 
     public Long getId() {
         return id;
