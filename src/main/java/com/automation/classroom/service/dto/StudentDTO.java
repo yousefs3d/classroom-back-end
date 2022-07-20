@@ -14,7 +14,6 @@ public class StudentDTO {
     private String email;
     @Pattern(regexp = "[055]+[0-9]{7}")
     private String mobile;
-    private List<ClassroomDTO> classroomDTOs;
     public StudentDTO() {
     }
 
@@ -48,13 +47,5 @@ public class StudentDTO {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
-    }
-
-    public List<ClassroomDTO> getClassroomDTOs() {
-        return classroomDTOs;
-    }
-
-    public void setClassroomDTOs(List<ClassroomDTO> classroomDTOs) {
-        this.classroomDTOs = classroomDTOs;
     }
 }

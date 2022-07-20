@@ -21,27 +21,32 @@ public class StudentController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> getAllClasses(){
+    public ResponseEntity<?> getAllStudents(){
         return ResponseEntity.ok(studentService.getAllStudents());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getClassroom(@PathVariable Long id){
+    public ResponseEntity<?> getStudent(@PathVariable Long id){
         return new ResponseEntity<>(studentService.getStudentById(id), HttpStatus.OK);
     }
 
+    @GetMapping("/classrooms/{studentId}")
+    public ResponseEntity<?> getStudentClassrooms(@PathVariable Long studentId){
+        return new ResponseEntity<>(studentService.getStudentClassrooms(studentId), HttpStatus.OK);
+    }
+
     @PostMapping("/add")
-    public ResponseEntity<?> addNewClass(@RequestBody StudentVM studentVM){
+    public ResponseEntity<?> addNewStudent(@RequestBody StudentVM studentVM){
         return new ResponseEntity<>(studentService.addNewStudent(studentVM), HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> updateClassroom(@RequestBody StudentVM studentVM){
+    public ResponseEntity<?> updateStudent(@RequestBody StudentVM studentVM){
         return new ResponseEntity<>(studentService.updateStudent(studentVM), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteClassroom(@PathVariable Long id){
+    public ResponseEntity<?> deleteStudent(@PathVariable Long id){
         studentService.deleteStudent(id);
         return new ResponseEntity<> (HttpStatus.OK);
     }

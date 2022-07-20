@@ -11,10 +11,10 @@ public class StudentClassroom implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FK_Student_Id")
     private Student student;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FK_Classroom_Id")
     private Classroom classroom;
     private Boolean isActive;

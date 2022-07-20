@@ -5,6 +5,7 @@ import com.automation.classroom.domain.Student;
 import com.automation.classroom.domain.StudentClassroom;
 import com.automation.classroom.exception.BusinessException;
 import com.automation.classroom.repository.StudentRepository;
+import com.automation.classroom.service.dto.ClassroomDTO;
 import com.automation.classroom.service.dto.StudentDTO;
 import com.automation.classroom.service.mapper.StudentMapper;
 import com.automation.classroom.service.vm.StudentVM;
@@ -34,6 +35,10 @@ public class StudentService {
     public List<StudentDTO> getAllStudents(){
         List<Student> students = studentRepository.findAll();
         return studentMapper.studentToStudentDTO(students);
+    }
+
+    public List<ClassroomDTO> getStudentClassrooms(Long studentId){
+        return studentClassroomService.getClassroomsByStudentId(studentId);
     }
 
 
